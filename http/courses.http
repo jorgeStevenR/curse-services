@@ -54,3 +54,18 @@ DELETE http://localhost:8080/api/cursos/2
 ### Buscar los cursos que tienen  un texto en espesifico
 
 GET http://localhost:8080/api/cursos/buscar?nombre=java
+
+
+
+### Crear otro curso
+POST http://localhost:8080/api/cursos
+Content-Type: application/json
+
+{
+    "name":"Programacion basica en Java",
+    "code":"JAVA01",
+    "description":"Este curso aborda la programacion basica ",
+    "initialDate":"2026-02-12",
+    "finalDate":"2026-02-28",
+    "credits": 4
+}

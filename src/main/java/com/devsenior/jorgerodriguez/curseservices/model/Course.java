@@ -3,6 +3,12 @@ package com.devsenior.jorgerodriguez.curseservices.model;
 import java.time.LocalDate;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 //POJO - Plain Old Java Objet
 //JavaBean
@@ -13,21 +19,29 @@ public class Course {
     private Long id;
 
     @Schema(description = "Nombre completo del curso",example = "Programacion Basica en java")
+    @NotBlank(message = "El campo 'name' es obligatorio")
     private String name;
 
     @Schema(description = "Codigo unico del curso", example = "Java101")
+    @NotBlank(message = "El campo 'code' es obligatorio")
+    @Size(min = 5, message = "El campo 'code' debe tener por lo menos 5 caracteres")
+    @Size(max = 10, message = "El campo code debe tener maximo 10 caracteres")
     private String code;
 
     @Schema(description = "Descripcion del curso", example = "Este curso esta orientado a la programacion basica en java")
     private String description;
 
     @Schema(description = "Fecha inicial de curso ", example ="2026-01-01")
+    @FutureOrPresent(message = "La fecha inicial no puede ser anterior a la fecha actual")
     private LocalDate initialDate;
     
     @Schema(description = "Fecha final del curso", example = "2026-01-02")
+    @Future(message = "La fecha final debe ser posterior a la fecha actual")
     private LocalDate finalDate;
 
     @Schema(description = "Creditos del curso",example = "3")
+    @Min(value = 1, message = "El campo 'credits' debe tener un valor superior o igual a 1 ")
+    @Max(value = 5, message = "El campo 'credits' debe tener un valor inferior o igual a 5")
     private Integer credits;
 
     public Course() {

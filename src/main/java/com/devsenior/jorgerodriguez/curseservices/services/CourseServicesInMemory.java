@@ -27,6 +27,7 @@ public class CourseServicesInMemory implements CourseServices {
 
     @Override
     public Course getOneById(Long id)throws IllegalArgumentException{
+
         validateId(id);
         return courses.stream()
                 .filter(b -> b.getId().equals(id))
@@ -92,31 +93,31 @@ public class CourseServicesInMemory implements CourseServices {
     }
 
     private void validateId(Long id){
-        if(id == null){
-            throw new IllegalArgumentException("No fue enviado un curso a guardar");
-        }
+        // if(id == null){
+        //     throw new IllegalArgumentException("No fue enviado un curso a guardar");
+        // }
 
-        if(id<0){
-            throw new IllegalArgumentException("El id no puede ser negativo");
-        }
+        // if(id<0){
+        //     throw new IllegalArgumentException("El id no puede ser negativo");
+        // }
     }
 
     private void validateCourse(Course course){
-        if(course == null){
-            throw new IllegalArgumentException("No fue enviado un curso a guardar");
-        }
+        // if(course == null){
+        //     throw new IllegalArgumentException("No fue enviado un curso a guardar");
+        // }
 
-        if(isBlank(course.getName())){
-            throw new IllegalArgumentException("El nombre del curso es obligatorio");
-        }
+        // if(isBlank(course.getName())){
+        //     throw new IllegalArgumentException("El nombre del curso es obligatorio");
+        // }
 
-        if(course.getCredits() <=0 ){
-            throw new IllegalArgumentException("Los creditos del curso deben de ser mayores a 0");
-        }
+        // if(course.getCredits() <=0 ){
+        //     throw new IllegalArgumentException("Los creditos del curso deben de ser mayores a 0");
+        // }
 
-        if(course.getInitialDate().isAfter(course.getFinalDate())){
-            throw new IllegalArgumentException("la fecha inicio debe ser anterior a la fecha final..");  
-        }
+        // if(course.getInitialDate().isAfter(course.getFinalDate())){
+        //     throw new IllegalArgumentException("la fecha inicio debe ser anterior a la fecha final..");  
+        // }
     }
     
 }
